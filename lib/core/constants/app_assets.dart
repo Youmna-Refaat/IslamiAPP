@@ -1,0 +1,33 @@
+class AppAssets {
+  static String splashBG = "assets/images/background.png";
+  static String quraanBG = "assets/images/quraan_BG.png";
+  static String hadithBG = "assets/images/hadith_BG.png";
+  static String sibhaBG = "assets/images/sebha_BG.png";
+  static String radioBG = "assets/images/radio_BG.png";
+  static String timesBG = "assets/images/times_BG.png";
+  static String detailsBG = "assets/images/details_BG.png";
+  static String hadithCardBG = "assets/images/Hadith Card.png";
+  static String splashImageLeft = "assets/images/image_left.png";
+  static String splashImageRight = "assets/images/image_right.png";
+  static String detailsShapeLeft = "assets/images/details_shape_left.png";
+  static String detailsShapeRight = "assets/images/details_shape_right.png";
+  static String detailsShapeBottom = "assets/images/details_image_bottom.png";
+  static String onBoardingWelcomeImg = "assets/images/onBoardingWelcome.png";
+  static String onBoardingIslamiImg = "assets/images/onBoardingIslami.png";
+  static String onBoardingQuraanImg = "assets/images/onBoardingQuraan.png";
+  static String onBoardingBearishImg = "assets/images/onBoardingBearish.png";
+  static String onBoardingRadioImg = "assets/images/onBoardingRadio.png";
+  static String logo = "assets/images/logo.png";
+  static String logoBG = "assets/images/islami.png";
+  static String glowImg = "assets/images/Glow.png";
+  static String searchField = "assets/images/textfield.png";
+  static String brandingImg = "assets/images/branding.png";
+  static String quraanImg = "assets/images/quranSura.png";
+  static String sebhaBody = "assets/images/sebha.png";
+  static String hadithIcn = "assets/icons/hadith.png";
+  static String quraanIcn = "assets/icons/quraan.png";
+  static String sibhaIcn = "assets/icons/sibha.png";
+  static String radioIcn = "assets/icons/radio.png";
+  static String timesIcn = "assets/icons/times.png";
+  static String suraNumberIcn = "assets/icons/number_shape.png";
+}
