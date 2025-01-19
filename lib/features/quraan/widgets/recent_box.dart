@@ -29,6 +29,7 @@ class RecentBox extends StatelessWidget {
                 Text(
                   suraData.suraNameEN,
                   style: TextStyle(
+                      fontFamily: 'Janna',
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
                       color: AppColors.black),
@@ -36,6 +37,7 @@ class RecentBox extends StatelessWidget {
                 Text(
                   suraData.suraNameAR,
                   style: TextStyle(
+                      fontFamily: 'Janna',
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
                       color: AppColors.black),
@@ -43,6 +45,7 @@ class RecentBox extends StatelessWidget {
                 Text(
                   suraData.suraVerses,
                   style: TextStyle(
+                      fontFamily: 'Janna',
                       fontSize: 14,
                       fontWeight: FontWeight.bold,
                       color: AppColors.black),

@@ -32,6 +32,7 @@ class AzkarCard extends StatelessWidget {
                 Text(
                   title,
                   style: TextStyle(
+                    fontFamily: 'Janna',
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
                     color: AppColors.white,

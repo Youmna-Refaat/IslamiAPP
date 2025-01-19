@@ -90,6 +90,7 @@ class _OnboardingLayoutState extends State<OnboardingLayout> {
                     child: Text(
                       'Back',
                       style: TextStyle(
+                          fontFamily: 'Janna',
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
                           color: AppColors.primaryColor),
@@ -106,6 +107,7 @@ class _OnboardingLayoutState extends State<OnboardingLayout> {
                     child: Text(
                       'Next',
                       style: TextStyle(
+                        fontFamily: 'Janna',
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
                         color: AppColors.primaryColor,
@@ -121,6 +123,7 @@ class _OnboardingLayoutState extends State<OnboardingLayout> {
                     child: Text(
                       'Finish',
                       style: TextStyle(
+                        fontFamily: 'Janna',
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
                         color: AppColors.primaryColor,

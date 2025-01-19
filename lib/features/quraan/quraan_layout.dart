@@ -630,6 +630,7 @@ class _QuraanLayoutState extends State<QuraanLayout> {
                     setState(() {});
                   },
                   style: TextStyle(
+                    fontFamily: 'Janna',
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
                     color: AppColors.titleTextColor,
@@ -640,6 +641,7 @@ class _QuraanLayoutState extends State<QuraanLayout> {
                     fillColor: AppColors.secondaryColor.withValues(alpha: 0.5),
                     hintText: "Sura Name",
                     hintStyle: TextStyle(
+                      fontFamily: 'Janna',
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
                       color: AppColors.titleTextColor,
@@ -694,6 +696,7 @@ class _QuraanLayoutState extends State<QuraanLayout> {
                       child: Text(
                         "Most Recently",
                         style: TextStyle(
+                          fontFamily: 'Janna',
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
                           color: AppColors.titleTextColor,
@@ -708,6 +711,7 @@ class _QuraanLayoutState extends State<QuraanLayout> {
                           child: Text(
                             "No Recent Sura",
                             style: TextStyle(
+                                fontFamily: 'Janna',
                                 fontSize: 22,
                                 fontWeight: FontWeight.bold,
                                 color: AppColors.primaryColor),
@@ -737,6 +741,7 @@ class _QuraanLayoutState extends State<QuraanLayout> {
                       child: Text(
                         "Sura List",
                         style: TextStyle(
+                            fontFamily: 'Janna',
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
                             color: AppColors.titleTextColor),

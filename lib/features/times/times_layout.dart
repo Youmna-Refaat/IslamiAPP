@@ -49,6 +49,7 @@ class TimesLayout extends StatelessWidget {
                           Text(
                             "16 Jul,\n2024",
                             style: TextStyle(
+                              fontFamily: 'Janna',
                               fontSize: 13,
                               fontWeight: FontWeight.bold,
                               color: AppColors.white,
@@ -57,6 +58,7 @@ class TimesLayout extends StatelessWidget {
                           Text(
                             "Pray Time\n Tuesday",
                             style: TextStyle(
+                              fontFamily: 'Janna',
                               fontSize: 14,
                               fontWeight: FontWeight.bold,
                               color: AppColors.black,
@@ -65,6 +67,7 @@ class TimesLayout extends StatelessWidget {
                           Text(
                             "09 Muh,\n 1446",
                             style: TextStyle(
+                              fontFamily: 'Janna',
                               fontSize: 13,
                               fontWeight: FontWeight.bold,
                               color: AppColors.white,
@@ -82,6 +85,7 @@ class TimesLayout extends StatelessWidget {
                         Text(
                           'Next Pray - 02:32',
                           style: TextStyle(
+                              fontFamily: 'Janna',
                               color: AppColors.black,
                               fontSize: 16,
                               fontWeight: FontWeight.bold),
@@ -107,6 +111,7 @@ class TimesLayout extends StatelessWidget {
               child: Text(
                 "Azkar",
                 style: TextStyle(
+                  fontFamily: 'Janna',
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
                   color: AppColors.titleTextColor,

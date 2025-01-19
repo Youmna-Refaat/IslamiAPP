@@ -25,6 +25,7 @@ class HadithCard extends StatelessWidget {
           Text(
             hadithData.hadithTitle,
             style: TextStyle(
+              fontFamily: 'Janna',
               fontSize: 20,
               fontWeight: FontWeight.bold,
               color: AppColors.black,
@@ -39,6 +40,7 @@ class HadithCard extends StatelessWidget {
                   textAlign: TextAlign.center,
                   hadithData.hadithContent,
                   style: TextStyle(
+                    fontFamily: 'Janna',
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
                     color: AppColors.black,

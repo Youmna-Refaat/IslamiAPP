@@ -41,6 +41,7 @@ class _SebhaLayoutState extends State<SebhaLayout> {
           Text(
             "سَبِّحِ اسْمَ رَبِّكَ الأعلى",
             style: TextStyle(
+              fontFamily: 'Janna',
               fontSize: 36,
               fontWeight: FontWeight.bold,
               color: AppColors.white,
@@ -80,6 +81,7 @@ class _SebhaLayoutState extends State<SebhaLayout> {
                         textAlign: TextAlign.center,
                         "سبحان الله",
                         style: TextStyle(
+                          fontFamily: 'Janna',
                           fontSize: 30,
                           fontWeight: FontWeight.bold,
                           color: AppColors.white,
@@ -97,6 +99,7 @@ class _SebhaLayoutState extends State<SebhaLayout> {
                         textAlign: TextAlign.center,
                         "$counter",
                         style: TextStyle(
+                          fontFamily: 'Janna',
                           fontSize: 26,
                           fontWeight: FontWeight.bold,
                           color: AppColors.white,

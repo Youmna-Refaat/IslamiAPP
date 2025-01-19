@@ -30,6 +30,7 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
         title: Text(
           arguments.suraNameEN,
           style: TextStyle(
+              fontFamily: 'Janna',
               fontSize: 20,
               fontWeight: FontWeight.bold,
               color: AppColors.primaryColor),
@@ -54,6 +55,7 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
                     textAlign: TextAlign.center,
                     arguments.suraNameAR,
                     style: TextStyle(
+                        fontFamily: 'Janna',
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
                         color: AppColors.primaryColor),
@@ -74,6 +76,7 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
                   "${versesList[index]} \n [${index + 1}]", // the number on next line just to be more organized
                   textAlign: TextAlign.center,
                   style: TextStyle(
+                      fontFamily: 'Janna',
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
                       color: AppColors.primaryColor),

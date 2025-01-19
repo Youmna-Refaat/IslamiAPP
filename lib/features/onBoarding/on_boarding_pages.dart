@@ -30,6 +30,7 @@ class OnboardingPage extends StatelessWidget {
         Text(
           title,
           style: TextStyle(
+            fontFamily: 'Janna',
             color: AppColors.primaryColor,
             fontSize: 24,
             fontWeight: FontWeight.bold,
@@ -42,6 +43,7 @@ class OnboardingPage extends StatelessWidget {
             child: Text(
               subtitle!,
               style: TextStyle(
+                fontFamily: 'Janna',
                 color: AppColors.primaryColor,
                 fontSize: 16,
               ),

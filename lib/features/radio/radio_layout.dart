@@ -68,6 +68,7 @@ class _RadioLayoutState extends State<RadioLayout> {
                                 ? AppColors.black
                                 : AppColors.white,
                             fontSize: 16,
+                            fontFamily: 'Janna',
                           ),
                         ),
                       ),
@@ -97,6 +98,7 @@ class _RadioLayoutState extends State<RadioLayout> {
                                 ? AppColors.white
                                 : AppColors.black,
                             fontSize: 16,
+                            fontFamily: 'Janna',
                           ),
                         ),
                       ),

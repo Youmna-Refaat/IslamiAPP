@@ -32,6 +32,7 @@ class _HadithDetailsScreenState extends State<HadithDetailsScreen> {
         title: Text(
           "Hadith ${index + 1}",
           style: TextStyle(
+              fontFamily: 'Janna',
               fontSize: 20,
               fontWeight: FontWeight.bold,
               color: AppColors.primaryColor),
@@ -56,6 +57,7 @@ class _HadithDetailsScreenState extends State<HadithDetailsScreen> {
                     textAlign: TextAlign.center,
                     hadithData.hadithTitle,
                     style: TextStyle(
+                        fontFamily: 'Janna',
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
                         color: AppColors.primaryColor),
@@ -76,6 +78,7 @@ class _HadithDetailsScreenState extends State<HadithDetailsScreen> {
                   textAlign: TextAlign.center,
                   hadithData.hadithContent,
                   style: TextStyle(
+                      fontFamily: 'Janna',
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
                       color: AppColors.primaryColor),

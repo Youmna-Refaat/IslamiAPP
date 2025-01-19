@@ -30,6 +30,7 @@ class PrayerTimeCard extends StatelessWidget {
             Text(
               prayerTimeModel.prayer,
               style: TextStyle(
+                  fontFamily: 'Janna',
                   fontSize: 14,
                   fontWeight: FontWeight.bold,
                   color: AppColors.white),
@@ -37,6 +38,7 @@ class PrayerTimeCard extends StatelessWidget {
             Text(
               prayerTimeModel.time,
               style: TextStyle(
+                  fontFamily: 'Janna',
                   fontSize: 17,
                   fontWeight: FontWeight.bold,
                   color: AppColors.white),
@@ -44,6 +46,7 @@ class PrayerTimeCard extends StatelessWidget {
             Text(
               prayerTimeModel.meridiem,
               style: TextStyle(
+                  fontFamily: 'Janna',
                   fontSize: 14,
                   fontWeight: FontWeight.bold,
                   color: AppColors.white),

@@ -32,6 +32,7 @@ class RadioCard extends StatelessWidget {
                 textAlign: TextAlign.center,
                 title,
                 style: TextStyle(
+                    fontFamily: 'Janna',
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
                     color: AppColors.black),
