@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 
 import '../../../core/constants/app_assets.dart';
 import '../../../core/theme/color_class.dart';
-import '../../../models/recent_data.dart';
+import '../../../models/sura_data.dart';
 
 class RecentBox extends StatelessWidget {
-  final RecentData recentData;
+  final SuraData suraData;
 
   const RecentBox({
     super.key,
-    required this.recentData,
+    required this.suraData,
   });
   @override
   Widget build(BuildContext context) {
@@ -27,21 +27,21 @@ class RecentBox extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Text(
-                  recentData.suraNameEN,
+                  suraData.suraNameEN,
                   style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
                       color: AppColors.black),
                 ),
                 Text(
-                  recentData.suraNameAR,
+                  suraData.suraNameAR,
                   style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
                       color: AppColors.black),
                 ),
                 Text(
-                  recentData.suraVerses,
+                  suraData.suraVerses,
                   style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.bold,

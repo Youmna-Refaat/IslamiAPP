@@ -1,27 +1,31 @@
 import 'package:flutter/material.dart';
 
 import '../../core/constants/app_assets.dart';
+import '../../core/constants/local_storage_key.dart';
+import '../../core/services/local_storage_service.dart';
 import '../../core/theme/color_class.dart';
-import '../../models/recent_data.dart';
 import '../../models/sura_data.dart';
 import 'sura_details.dart';
 import 'widgets/recent_box.dart';
 import 'widgets/sura_card.dart';
 
-class QuraanLayout extends StatelessWidget {
+class QuraanLayout extends StatefulWidget {
   static String routeName = "Quraan Layout";
   QuraanLayout({super.key});
-  final List<RecentData> recentDataList = [
-    RecentData(
-        suraNameEN: "Al-Anbiya",
-        suraNameAR: "الانبياء",
-        suraVerses: "112 verses"),
-    RecentData(
-      suraNameEN: "Al-Fatiha",
-      suraNameAR: "الفاتحة",
-      suraVerses: "7 verses",
-    ),
-  ];
+
+  @override
+  State<QuraanLayout> createState() => _QuraanLayoutState();
+}
+
+class _QuraanLayoutState extends State<QuraanLayout> {
+  @override
+  void initState() {
+    super.initState();
+    _loadRecenetSura();
+  }
+
+  List<String> recentSuraIndexList = [];
+  List<SuraData> recentSuraList = [];
 
   final List<SuraData> suraDataList = [
     SuraData(
@@ -668,12 +672,33 @@ class QuraanLayout extends StatelessWidget {
               ),
               SizedBox(
                 height: 150,
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (context, index) => RecentBox(
-                    recentData: recentDataList[index],
+                child: Visibility(
+                  visible: recentSuraList.isNotEmpty,
+                  replacement: Center(
+                    child: Text(
+                      "No Recent Sura",
+                      style: TextStyle(
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold,
+                          color: AppColors.primaryColor),
+                    ),
                   ),
-                  itemCount: recentDataList.length,
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, index) => GestureDetector(
+                      onTap: () {
+                        Navigator.pushNamed(
+                          context,
+                          SuraDetailsScreen.routeName,
+                          arguments: recentSuraList[index],
+                        );
+                      },
+                      child: RecentBox(
+                        suraData: recentSuraList[index],
+                      ),
+                    ),
+                    itemCount: recentSuraList.length,
+                  ),
                 ),
               ),
               Padding(
@@ -692,9 +717,7 @@ class QuraanLayout extends StatelessWidget {
                   physics: NeverScrollableScrollPhysics(),
                   scrollDirection: Axis.vertical,
                   itemBuilder: (context, index) => GestureDetector(
-                        onTap: () => Navigator.pushNamed(
-                            context, SuraDetailsScreen.routeName,
-                            arguments: suraDataList[index]),
+                        onTap: () => _onSuraTab(index),
                         child: SuraCard(
                           suraData: suraDataList[index],
                         ),
@@ -712,5 +735,36 @@ class QuraanLayout extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  _onSuraTab(int index) {
+    _casheSuraIndex(index);
+    Navigator.pushNamed(context, SuraDetailsScreen.routeName,
+        arguments: suraDataList[index]);
+    setState(() {});
+  }
+
+  _casheSuraIndex(int index) async {
+    var indexString = index.toString();
+    if (recentSuraIndexList.contains(indexString)) return;
+    if (recentSuraIndexList.length == 5) {
+      recentSuraIndexList.removeLast();
+    }
+    recentSuraIndexList.insert(0, indexString);
+    await LocalStorageService.setList(
+        LocalStorageKeys.recentSuras, recentSuraIndexList);
+    _loadRecenetSura();
+    setState(() {});
+  }
+
+  _loadRecenetSura() {
+    recentSuraIndexList = [];
+    recentSuraList = [];
+    recentSuraIndexList =
+        LocalStorageService.getStringList(LocalStorageKeys.recentSuras) ?? [];
+    for (var index in recentSuraIndexList) {
+      var indexInt = int.parse(index);
+      recentSuraList.add(suraDataList[indexInt]);
+    }
   }
 }
