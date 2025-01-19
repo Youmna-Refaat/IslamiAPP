@@ -19,6 +19,14 @@ class AppAssets {
   static String onBoardingRadioImg = "assets/images/onBoardingRadio.png";
   static String logo = "assets/images/logo.png";
   static String logoBG = "assets/images/islami.png";
+  static String radioCardPlayedBG = "assets/images/radio_card_played_BG.png";
+  static String radioCardUnplayedBG =
+      "assets/images/radio_card_unplayed_BG.png";
+  static String timesBoxBG = "assets/images/times_box_BG.png";
+  static String eveningAzkarImg = "assets/images/evening_azkar.png";
+  static String morningAzkarImg = "assets/images/morning_azkar.png";
+  static String sleepingAzkarImg = "assets/images/sleeping_azkar.png";
+  static String wakingAzkarImg = "assets/images/waking_azkar.png";
   static String glowImg = "assets/images/Glow.png";
   static String searchField = "assets/images/textfield.png";
   static String brandingImg = "assets/images/branding.png";

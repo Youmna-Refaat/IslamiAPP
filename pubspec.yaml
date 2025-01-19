@@ -77,11 +77,11 @@ flutter:
   # in this "flutter" section. Each entry in this list should have a
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
-  # example:
-  # fonts:
-  #   - family: Janna
-  #     fonts:
-  #       - asset: Fonts/Janna LT Bold.ttf
+  # example:0
+  fonts:
+    - family: Janna
+      fonts:
+        - asset: assets/Fonts/Janna LT Bold.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
