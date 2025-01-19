@@ -24,8 +24,10 @@ class _QuraanLayoutState extends State<QuraanLayout> {
     _loadRecenetSura();
   }
 
+  String searchQuery = "";
   List<String> recentSuraIndexList = [];
   List<SuraData> recentSuraList = [];
+  List<SuraData> searchSuraList = [];
 
   final List<SuraData> suraDataList = [
     SuraData(
@@ -604,6 +606,8 @@ class _QuraanLayoutState extends State<QuraanLayout> {
   Widget build(BuildContext context) {
     return Material(
       child: Container(
+        width: double.infinity,
+        height: double.infinity,
         decoration: BoxDecoration(
           image: DecorationImage(
               image: AssetImage(AppAssets.quraanBG), fit: BoxFit.cover),
@@ -620,6 +624,11 @@ class _QuraanLayoutState extends State<QuraanLayout> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: TextFormField(
+                  onChanged: (value) {
+                    searchQuery = value;
+                    search();
+                    setState(() {});
+                  },
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
@@ -658,77 +667,102 @@ class _QuraanLayoutState extends State<QuraanLayout> {
                   ),
                 ),
               ),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                child: Text(
-                  "Most Recently",
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                    color: AppColors.titleTextColor,
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 150,
-                child: Visibility(
-                  visible: recentSuraList.isNotEmpty,
-                  replacement: Center(
-                    child: Text(
-                      "No Recent Sura",
-                      style: TextStyle(
-                          fontSize: 22,
-                          fontWeight: FontWeight.bold,
-                          color: AppColors.primaryColor),
-                    ),
-                  ),
-                  child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
+              Visibility(
+                visible: searchQuery.isEmpty,
+                replacement: ListView.separated(
+                    shrinkWrap: true,
+                    physics: NeverScrollableScrollPhysics(),
+                    scrollDirection: Axis.vertical,
                     itemBuilder: (context, index) => GestureDetector(
-                      onTap: () {
-                        Navigator.pushNamed(
-                          context,
-                          SuraDetailsScreen.routeName,
-                          arguments: recentSuraList[index],
-                        );
-                      },
-                      child: RecentBox(
-                        suraData: recentSuraList[index],
-                      ),
-                    ),
-                    itemCount: recentSuraList.length,
-                  ),
-                ),
-              ),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                child: Text(
-                  "Sura List",
-                  style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      color: AppColors.titleTextColor),
-                ),
-              ),
-              ListView.separated(
-                  shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
-                  scrollDirection: Axis.vertical,
-                  itemBuilder: (context, index) => GestureDetector(
-                        onTap: () => _onSuraTab(index),
-                        child: SuraCard(
-                          suraData: suraDataList[index],
+                          onTap: () =>
+                              _onSuraTab(searchSuraList[index].suraID - 1),
+                          child: SuraCard(
+                            suraData: searchSuraList[index],
+                          ),
+                        ),
+                    separatorBuilder: (context, index) => Divider(
+                          endIndent: 60,
+                          indent: 60,
+                        ),
+                    itemCount: searchSuraList.length),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 20, vertical: 10),
+                      child: Text(
+                        "Most Recently",
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: AppColors.titleTextColor,
                         ),
                       ),
-                  separatorBuilder: (context, index) => Divider(
-                        endIndent: 60,
-                        indent: 60,
+                    ),
+                    SizedBox(
+                      height: 150,
+                      child: Visibility(
+                        visible: recentSuraList.isNotEmpty,
+                        replacement: Center(
+                          child: Text(
+                            "No Recent Sura",
+                            style: TextStyle(
+                                fontSize: 22,
+                                fontWeight: FontWeight.bold,
+                                color: AppColors.primaryColor),
+                          ),
+                        ),
+                        child: ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          itemBuilder: (context, index) => GestureDetector(
+                            onTap: () {
+                              Navigator.pushNamed(
+                                context,
+                                SuraDetailsScreen.routeName,
+                                arguments: recentSuraList[index],
+                              );
+                            },
+                            child: RecentBox(
+                              suraData: recentSuraList[index],
+                            ),
+                          ),
+                          itemCount: recentSuraList.length,
+                        ),
                       ),
-                  itemCount: suraDataList.length),
-              SizedBox(
-                height: 15,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 20, vertical: 10),
+                      child: Text(
+                        "Sura List",
+                        style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            color: AppColors.titleTextColor),
+                      ),
+                    ),
+                    ListView.separated(
+                        shrinkWrap: true,
+                        physics: NeverScrollableScrollPhysics(),
+                        scrollDirection: Axis.vertical,
+                        itemBuilder: (context, index) => GestureDetector(
+                              onTap: () =>
+                                  _onSuraTab(suraDataList[index].suraID - 1),
+                              child: SuraCard(
+                                suraData: suraDataList[index],
+                              ),
+                            ),
+                        separatorBuilder: (context, index) => Divider(
+                              endIndent: 60,
+                              indent: 60,
+                            ),
+                        itemCount: suraDataList.length),
+                    SizedBox(
+                      height: 15,
+                    )
+                  ],
+                ),
               )
             ],
           ),
@@ -765,6 +799,16 @@ class _QuraanLayoutState extends State<QuraanLayout> {
     for (var index in recentSuraIndexList) {
       var indexInt = int.parse(index);
       recentSuraList.add(suraDataList[indexInt]);
+    }
+  }
+
+  void search() {
+    searchSuraList = [];
+    for (var sura in suraDataList) {
+      if (sura.suraNameAR.toLowerCase().contains(searchQuery.toLowerCase()) ||
+          sura.suraNameEN.toLowerCase().contains(searchQuery.toLowerCase())) {
+        searchSuraList.add(sura);
+      }
     }
   }
 }
