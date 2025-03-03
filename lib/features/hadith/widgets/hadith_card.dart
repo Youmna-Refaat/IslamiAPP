@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-
 import '../../../core/constants/app_assets.dart';
 import '../../../core/theme/color_class.dart';
-import '../../../models/hadith_data.dart';
+import '../../../data/models/hadith_data.dart';
 
 class HadithCard extends StatelessWidget {
   final HadithData hadithData;

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../core/constants/app_assets.dart';
 import '../../../core/theme/color_class.dart';
-import '../../../models/sura_data.dart';
+import '../../../data/models/sura_data.dart';
 
 class RecentBox extends StatelessWidget {
   final SuraData suraData;

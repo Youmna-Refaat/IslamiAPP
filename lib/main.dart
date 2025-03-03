@@ -15,7 +15,8 @@ import 'features/times/times_layout.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await LocalStorageService.init();
-  runApp(DevicePreview(enabled: true, builder: (context) => const IslamiApp()));
+  runApp(
+      DevicePreview(enabled: false, builder: (context) => const IslamiApp()));
 }
 
 class IslamiApp extends StatelessWidget {

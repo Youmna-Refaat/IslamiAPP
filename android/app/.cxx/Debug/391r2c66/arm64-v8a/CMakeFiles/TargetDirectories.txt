@@ -1,0 +1,2 @@
+D:/Route/projects/islami_app/android/app/.cxx/Debug/391r2c66/arm64-v8a/CMakeFiles/edit_cache.dir
+D:/Route/projects/islami_app/android/app/.cxx/Debug/391r2c66/arm64-v8a/CMakeFiles/rebuild_cache.dir

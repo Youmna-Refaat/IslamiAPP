@@ -1,13 +1,99 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import '../../core/constants/app_assets.dart';
 import '../../core/theme/color_class.dart';
 import 'widgets/azkar_card.dart';
 import 'widgets/prayer_time_list.dart';
+import '../../data/network/prayer_times_api.dart'; // API Service
+import '../../data/models/prayer_time_model.dart';
 
-class TimesLayout extends StatelessWidget {
+class TimesLayout extends StatefulWidget {
   static String routeName = "Times Layout";
 
   const TimesLayout({super.key});
+
+  @override
+  _TimesLayoutState createState() => _TimesLayoutState();
+}
+
+class _TimesLayoutState extends State<TimesLayout> {
+  late String todayDate;
+  late String hijriDate = "Loading...";
+  late String dayName;
+  String nextPrayer = "Loading...";
+  String nextPrayerTime = "--:--";
+  List<PrayerTimes>? prayerTimes;
+
+  @override
+  void initState() {
+    super.initState();
+    _getDates();
+    _fetchPrayerTimes();
+  }
+
+  void _getDates() {
+    DateTime now = DateTime.now();
+    todayDate = DateFormat("dd MMM,\n yyyy").format(now);
+    dayName = DateFormat("EEEE").format(now);
+    setState(() {});
+  }
+
+  Future<void> _fetchPrayerTimes() async {
+    PrayerTimeService service = PrayerTimeService();
+    final prayerTimesData =
+        await service.fetchPrayerTimes("Cairo", "Egypt", todayDate);
+
+    setState(() {
+      hijriDate =
+          "${prayerTimesData.hijriDay} ${prayerTimesData.hijriMonth}, \n ${prayerTimesData.hijriYear}";
+    });
+
+    prayerTimes = [
+      PrayerTimes(name: "Fajr", time: prayerTimesData.fajr),
+      PrayerTimes(name: "Sunrise", time: prayerTimesData.sunrise),
+      PrayerTimes(name: "Dhuhr", time: prayerTimesData.dhuhr),
+      PrayerTimes(name: "Asr", time: prayerTimesData.asr),
+      PrayerTimes(name: "Maghrib", time: prayerTimesData.maghrib),
+      PrayerTimes(name: "Isha", time: prayerTimesData.isha),
+    ];
+
+    _calculateNextPrayer();
+  }
+
+  void _calculateNextPrayer() {
+    if (prayerTimes == null) return;
+
+    DateTime now = DateTime.now();
+    DateFormat timeFormat = DateFormat("HH:mm");
+
+    for (var prayer in prayerTimes!) {
+      try {
+        DateTime prayerTime = timeFormat.parse(prayer.time);
+        DateTime fullPrayerTime = DateTime(
+          now.year,
+          now.month,
+          now.day,
+          prayerTime.hour,
+          prayerTime.minute,
+        );
+
+        if (fullPrayerTime.isAfter(now)) {
+          setState(() {
+            nextPrayer = prayer.name;
+            nextPrayerTime = prayer.time;
+          });
+          return;
+        }
+      } catch (e) {
+        print("Error parsing prayer time: ${prayer.time}");
+      }
+    }
+
+    setState(() {
+      nextPrayer = "Fajr";
+      nextPrayerTime = prayerTimes!.first.time;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,9 +114,8 @@ class TimesLayout extends StatelessWidget {
             ),
             SizedBox(height: 10),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               child: Container(
-                height: MediaQuery.of(context).size.height * 0.33,
                 width: double.infinity,
                 decoration: BoxDecoration(
                     image: DecorationImage(
@@ -47,7 +132,7 @@ class TimesLayout extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            "16 Jul,\n2024",
+                            todayDate,
                             style: TextStyle(
                               fontFamily: 'Janna',
                               fontSize: 13,
@@ -56,7 +141,7 @@ class TimesLayout extends StatelessWidget {
                             ),
                           ),
                           Text(
-                            "Pray Time\n Tuesday",
+                            "Pray Time\n$dayName",
                             style: TextStyle(
                               fontFamily: 'Janna',
                               fontSize: 14,
@@ -65,7 +150,7 @@ class TimesLayout extends StatelessWidget {
                             ),
                           ),
                           Text(
-                            "09 Muh,\n 1446",
+                            hijriDate,
                             style: TextStyle(
                               fontFamily: 'Janna',
                               fontSize: 13,
@@ -77,30 +162,32 @@ class TimesLayout extends StatelessWidget {
                       ),
                     ),
                     SizedBox(height: 10),
-                    PrayerTimeList(),
-                    SizedBox(height: 10),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                    Column(
                       children: [
-                        Text(
-                          'Next Pray - 02:32',
-                          style: TextStyle(
-                              fontFamily: 'Janna',
-                              color: AppColors.black,
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold),
+                        PrayerTimeList(),
+                        SizedBox(height: 10),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              'Next Prayer - $nextPrayer at $nextPrayerTime',
+                              style: TextStyle(
+                                  fontFamily: 'Janna',
+                                  color: AppColors.black,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            SizedBox(width: 40),
+                            GestureDetector(
+                                onTap: () {},
+                                child: Icon(
+                                  Icons.volume_off,
+                                ))
+                          ],
                         ),
-                        SizedBox(
-                          width: 40,
-                        ),
-                        GestureDetector(
-                            onTap: () {},
-                            child: Icon(
-                              Icons.volume_off,
-                            ))
+                        SizedBox(height: 5),
                       ],
                     ),
-                    SizedBox(height: 5),
                   ],
                 ),
               ),

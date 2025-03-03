@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-
 import '../../../core/theme/color_class.dart';
-import '../../../models/prayer_time_model.dart';
+import '../../../data/models/prayer_time_model.dart';
 
 class PrayerTimeCard extends StatelessWidget {
-  final PrayerTimeModel prayerTimeModel;
+  final PrayerTimes prayerTimeModel;
   const PrayerTimeCard({
     super.key,
     required this.prayerTimeModel,
@@ -12,23 +11,25 @@ class PrayerTimeCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(right: 10),
-      child: Container(
-        width: 80,
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [AppColors.primaryColor, AppColors.black],
-            begin: Alignment.bottomRight,
-            end: Alignment.topLeft,
-          ),
-          borderRadius: BorderRadius.circular(20),
+    return Container(
+      padding: EdgeInsets.symmetric(vertical: 5),
+      margin: const EdgeInsets.only(right: 10),
+      width: 80,
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          colors: [AppColors.primaryColor, AppColors.black],
+          begin: Alignment.bottomRight,
+          end: Alignment.topLeft,
         ),
+        borderRadius: BorderRadius.circular(20),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 10),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Text(
-              prayerTimeModel.prayer,
+              prayerTimeModel.name,
               style: TextStyle(
                   fontFamily: 'Janna',
                   fontSize: 14,
@@ -43,14 +44,6 @@ class PrayerTimeCard extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                   color: AppColors.white),
             ),
-            Text(
-              prayerTimeModel.meridiem,
-              style: TextStyle(
-                  fontFamily: 'Janna',
-                  fontSize: 14,
-                  fontWeight: FontWeight.bold,
-                  color: AppColors.white),
-            )
           ],
         ),
       ),

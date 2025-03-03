@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 
 import '../../core/constants/app_assets.dart';
 import '../../core/theme/color_class.dart';
-import '../../models/sura_data.dart';
+import '../../data/models/sura_data.dart';
 
 class SuraDetailsScreen extends StatefulWidget {
   static String routeName = "Sura Details";
@@ -23,71 +23,78 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
   Widget build(BuildContext context) {
     var arguments = ModalRoute.of(context)?.settings.arguments as SuraData;
     if (versesList.isEmpty) loadSuraData(arguments.suraID);
-    return Scaffold(
-      backgroundColor: AppColors.black,
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text(
-          arguments.suraNameEN,
-          style: TextStyle(
-              fontFamily: 'Janna',
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-              color: AppColors.primaryColor),
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: AppColors.black,
+        appBar: AppBar(
+          centerTitle: true,
+          title: Text(
+            arguments.suraNameEN,
+            style: TextStyle(
+                fontFamily: 'Janna',
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: AppColors.primaryColor),
+          ),
+          backgroundColor: AppColors.black,
+          elevation: 0,
+          scrolledUnderElevation: 0,
+          iconTheme: IconThemeData(
+            color: AppColors.primaryColor,
+          ),
         ),
-        backgroundColor: Colors.transparent,
-        iconTheme: IconThemeData(
-          color: AppColors.primaryColor,
-        ),
-      ),
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Row(
-              children: [
-                Image.asset(
-                  AppAssets.detailsShapeLeft,
-                  height: 92,
-                ),
-                Expanded(
+        body: Column(
+          children: [
+            SizedBox(height: 10),
+
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Row(
+                children: [
+                  Image.asset(
+                    AppAssets.detailsShapeLeft,
+                    height: 92,
+                  ),
+                  Expanded(
+                    child: Text(
+                      textAlign: TextAlign.center,
+                      arguments.suraNameAR,
+                      style: TextStyle(
+                          fontFamily: 'Janna',
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
+                          color: AppColors.primaryColor),
+                    ),
+                  ),
+                  Image.asset(
+                    AppAssets.detailsShapeRight,
+                    height: 92,
+                  ),
+                ],
+              ),
+            ),
+            Expanded(
+              child: ListView.builder(
+                shrinkWrap: true,
+                itemBuilder: (context, index) => Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 40),
                   child: Text(
+                    "${versesList[index]} \n [${index + 1}]", // the number on next line just to be more organized
                     textAlign: TextAlign.center,
-                    arguments.suraNameAR,
                     style: TextStyle(
                         fontFamily: 'Janna',
-                        fontSize: 24,
+                        fontSize: 20,
                         fontWeight: FontWeight.bold,
                         color: AppColors.primaryColor),
                   ),
                 ),
-                Image.asset(
-                  AppAssets.detailsShapeRight,
-                  height: 92,
-                ),
-              ],
-            ),
-          ),
-          Expanded(
-            child: ListView.builder(
-              itemBuilder: (context, index) => Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 40),
-                child: Text(
-                  "${versesList[index]} \n [${index + 1}]", // the number on next line just to be more organized
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      fontFamily: 'Janna',
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: AppColors.primaryColor),
-                ),
+                itemCount: versesList.length,
               ),
-              itemCount: versesList.length,
             ),
-          ),
-          //Spacer(),
-          Image.asset(AppAssets.detailsShapeBottom),
-        ],
+            // Spacer(),
+            Image.asset(AppAssets.detailsShapeBottom),
+          ],
+        ),
       ),
     );
   }

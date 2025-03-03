@@ -4,14 +4,14 @@ import '../../core/constants/app_assets.dart';
 import '../../core/constants/local_storage_key.dart';
 import '../../core/services/local_storage_service.dart';
 import '../../core/theme/color_class.dart';
-import '../../models/sura_data.dart';
+import '../../data/models/sura_data.dart';
 import 'sura_details.dart';
 import 'widgets/recent_box.dart';
 import 'widgets/sura_card.dart';
 
 class QuraanLayout extends StatefulWidget {
   static String routeName = "Quraan Layout";
-  QuraanLayout({super.key});
+  const QuraanLayout({super.key});
 
   @override
   State<QuraanLayout> createState() => _QuraanLayoutState();

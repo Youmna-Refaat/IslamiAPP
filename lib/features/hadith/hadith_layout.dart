@@ -1,9 +1,8 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
 import '../../core/constants/app_assets.dart';
-import '../../models/hadith_data.dart';
+import '../../data/models/hadith_data.dart';
 import 'hadith_details.dart';
 import 'widgets/hadith_card.dart';
 
@@ -20,56 +19,65 @@ class _HadithLayoutState extends State<HadithLayout> {
   @override
   Widget build(BuildContext context) {
     if (hadithDataList.isEmpty) loadHadithData();
-    return Container(
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage(AppAssets.hadithBG),
-          fit: BoxFit.fitHeight,
-        ),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 10),
-            child: Image.asset(AppAssets.logoBG),
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
+
+    return SingleChildScrollView(
+      child: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage(AppAssets.hadithBG),
+            fit: BoxFit.cover,
           ),
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 10),
-              child: CarouselSlider(
-                  items: hadithDataList.map((e) {
-                    return GestureDetector(
-                      onDoubleTap: () => Navigator.pushNamed(
-                        context,
-                        HadithDetailsScreen.routeName,
-                        arguments: {
-                          'hadithData': e,
-                          'index': hadithDataList.indexOf(e),
-                        },
-                      ),
-                      child: HadithCard(
-                        hadithData: e,
-                      ),
-                    );
-                  }).toList(),
-                  options: CarouselOptions(
-                    aspectRatio: 0.95,
-                    viewportFraction: 0.68,
-                    initialPage: 0,
-                    enableInfiniteScroll: true,
-                    reverse: false,
-                    autoPlay: false,
-                    autoPlayInterval: Duration(seconds: 3),
-                    autoPlayAnimationDuration: Duration(milliseconds: 800),
-                    autoPlayCurve: Curves.fastOutSlowIn,
-                    enlargeCenterPage: true,
-                    enlargeFactor: 0.3,
-                    scrollDirection: Axis.horizontal,
-                  )),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Padding(
+              padding: EdgeInsets.symmetric(
+                  horizontal: width * 0.1, vertical: height * 0.02),
+              // padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 10),
+              child: Image.asset(AppAssets.logoBG),
             ),
-          )
-        ],
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10),
+              child: LayoutBuilder(builder: (context, constraints) {
+                // double viewportFraction = width < 400 ? 0.8 : 0.68;
+
+                return CarouselSlider(
+                    items: hadithDataList.map((e) {
+                      return GestureDetector(
+                        onDoubleTap: () => Navigator.pushNamed(
+                          context,
+                          HadithDetailsScreen.routeName,
+                          arguments: {
+                            'hadithData': e,
+                            'index': hadithDataList.indexOf(e),
+                          },
+                        ),
+                        child: HadithCard(
+                          hadithData: e,
+                        ),
+                      );
+                    }).toList(),
+                    options: CarouselOptions(
+                      aspectRatio: 0.95,
+                      viewportFraction: width < 400 ? 0.68 : 0.71,
+                      initialPage: 0,
+                      enableInfiniteScroll: true,
+                      reverse: false,
+                      autoPlay: false,
+                      autoPlayInterval: Duration(seconds: 3),
+                      autoPlayAnimationDuration: Duration(milliseconds: 800),
+                      autoPlayCurve: Curves.fastOutSlowIn,
+                      enlargeCenterPage: true,
+                      enlargeFactor: 0.3,
+                      scrollDirection: Axis.horizontal,
+                    ));
+              }),
+            ),
+          ],
+        ),
       ),
     );
   }

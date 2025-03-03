@@ -1,11 +1,50 @@
 import 'package:flutter/material.dart';
+import 'package:audioplayers/audioplayers.dart';
 import '../../../core/constants/app_assets.dart';
 import '../../../core/theme/color_class.dart';
 
-class RadioCard extends StatelessWidget {
-  final int index;
+class RadioCard extends StatefulWidget {
   final String title;
-  const RadioCard({super.key, required this.index, required this.title});
+  final String radioUrl; // Streaming URL
+  const RadioCard({super.key, required this.title, required this.radioUrl});
+
+  @override
+  _RadioCardState createState() => _RadioCardState();
+}
+
+class _RadioCardState extends State<RadioCard> {
+  final AudioPlayer _audioPlayer = AudioPlayer();
+  bool isPlaying = false;
+
+  void _togglePlayPause() async {
+    if (isPlaying) {
+      await _audioPlayer.pause();
+    } else {
+      if (widget.radioUrl.isNotEmpty &&
+          Uri.tryParse(widget.radioUrl)?.hasAbsolutePath == true) {
+        try {
+          await _audioPlayer.play(UrlSource(widget.radioUrl));
+        } catch (e) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('Failed to play audio}')),
+          );
+        }
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Invalid audio URL')),
+        );
+      }
+    }
+    setState(() {
+      isPlaying = !isPlaying;
+    });
+  }
+
+  @override
+  void dispose() {
+    _audioPlayer.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -14,13 +53,10 @@ class RadioCard extends StatelessWidget {
       child: Container(
         width: double.infinity,
         decoration: BoxDecoration(
-          image: index == 1
-              ? DecorationImage(
-                  image: AssetImage(AppAssets.radioCardPlayedBG),
-                  fit: BoxFit.fill)
-              : DecorationImage(
-                  image: AssetImage(AppAssets.radioCardUnplayedBG),
-                  fit: BoxFit.fill),
+          image: DecorationImage(
+            image: AssetImage(AppAssets.radioCardUnplayedBG),
+            fit: BoxFit.fill,
+          ),
           borderRadius: BorderRadius.circular(20),
         ),
         child: Padding(
@@ -29,30 +65,24 @@ class RadioCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Text(
+                widget.title,
                 textAlign: TextAlign.center,
-                title,
                 style: TextStyle(
-                    fontFamily: 'Janna',
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                    color: AppColors.black),
+                  fontFamily: 'Janna',
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: AppColors.black,
+                ),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   IconButton(
                     icon: Icon(
-                      index == 1 ? Icons.pause : Icons.play_arrow,
+                      isPlaying ? Icons.pause : Icons.play_arrow,
                       color: AppColors.black,
                     ),
-                    onPressed: () {},
-                  ),
-                  IconButton(
-                    icon: Icon(
-                      Icons.volume_up,
-                      color: AppColors.black,
-                    ),
-                    onPressed: () {},
+                    onPressed: _togglePlayPause,
                   ),
                 ],
               ),
