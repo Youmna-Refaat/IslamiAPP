@@ -25,91 +25,94 @@ class _RadioLayoutState extends State<RadioLayout> {
           fit: BoxFit.cover,
         ),
       ),
-      child: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 10),
-            child: Image.asset(AppAssets.logoBG),
-          ),
-          SizedBox(height: 10),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Container(
-              height: 40,
-              decoration: BoxDecoration(
-                color: AppColors.black.withValues(alpha: 0.7),
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Expanded(
-                    child: GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          isRadioSelected = true;
-                        });
-                      },
-                      child: Container(
-                        padding:
-                            EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-                        decoration: BoxDecoration(
-                          color: isRadioSelected
-                              ? AppColors.primaryColor
-                              : Colors.transparent,
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        child: Text(
-                          textAlign: TextAlign.center,
-                          'Radio',
-                          style: TextStyle(
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 10),
+              child: Image.asset(AppAssets.logoBG),
+            ),
+            SizedBox(height: 10),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Container(
+                height: 40,
+                decoration: BoxDecoration(
+                  color: AppColors.black.withValues(alpha: 0.7),
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: Row(
+                  children: [
+                    IntrinsicWidth(
+                      child: GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            isRadioSelected = true;
+                          });
+                        },
+                        child: Container(
+                          width: MediaQuery.of(context).size.width / 2 - 20,
+                          padding: EdgeInsets.symmetric(
+                              vertical: 10, horizontal: 20),
+                          decoration: BoxDecoration(
                             color: isRadioSelected
-                                ? AppColors.black
-                                : AppColors.white,
-                            fontSize: 16,
-                            fontFamily: 'Janna',
+                                ? AppColors.primaryColor
+                                : Colors.transparent,
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          child: Text(
+                            textAlign: TextAlign.center,
+                            'Radio',
+                            style: TextStyle(
+                              color: isRadioSelected
+                                  ? AppColors.black
+                                  : AppColors.white,
+                              fontSize: 16,
+                              fontFamily: 'Janna',
+                            ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                  Expanded(
-                    child: GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          isRadioSelected = false;
-                        });
-                      },
-                      child: Container(
-                        padding:
-                            EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-                        decoration: BoxDecoration(
-                          color: isRadioSelected
-                              ? Colors.transparent
-                              : AppColors.primaryColor,
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        child: Text(
-                          textAlign: TextAlign.center,
-                          'Reciters',
-                          style: TextStyle(
+                    IntrinsicWidth(
+                      child: GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            isRadioSelected = false;
+                          });
+                        },
+                        child: Container(
+                          width: MediaQuery.of(context).size.width / 2 - 20,
+                          padding: EdgeInsets.symmetric(
+                              vertical: 10, horizontal: 20),
+                          decoration: BoxDecoration(
                             color: isRadioSelected
-                                ? AppColors.white
-                                : AppColors.black,
-                            fontSize: 16,
-                            fontFamily: 'Janna',
+                                ? Colors.transparent
+                                : AppColors.primaryColor,
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          child: Text(
+                            textAlign: TextAlign.center,
+                            'Reciters',
+                            style: TextStyle(
+                              color: isRadioSelected
+                                  ? AppColors.white
+                                  : AppColors.black,
+                              fontSize: 16,
+                              fontFamily: 'Janna',
+                            ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
-          ),
-          SizedBox(height: 5),
-          isRadioSelected ? RadioBody() : RecitersBody(),
-        ],
+            SizedBox(height: 5),
+            isRadioSelected ? RadioBody() : RecitersBody(),
+          ],
+        ),
       ),
     );
   }

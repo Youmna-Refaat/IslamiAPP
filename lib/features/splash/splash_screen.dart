@@ -3,7 +3,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:animate_do/animate_do.dart';
 
 import '../../core/constants/app_assets.dart';
-import '../../core/theme/color_class.dart';
 import '../general_layout.dart';
 import '../onBoarding/on_boarding_layout.dart';
 
@@ -82,7 +81,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 duration: SplashScreen._duration,
                 child: Image.asset(
                   AppAssets.logo,
-                  height: 155,
+                  height: 200,
                 ),
               ),
             ),
@@ -99,35 +98,6 @@ class _SplashScreenState extends State<SplashScreen> {
                 ),
               ),
             ),
-            Container(
-              margin: EdgeInsets.only(bottom: 40),
-              child: Align(
-                alignment: Alignment.bottomCenter,
-                child: FadeInUp(
-                  duration: SplashScreen._duration,
-                  child: Image.asset(
-                    AppAssets.brandingImg,
-                    height: 76,
-                  ),
-                ),
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.only(bottom: 20),
-              child: Align(
-                alignment: Alignment.bottomCenter,
-                child: FadeInUp(
-                  duration: SplashScreen._duration,
-                  child: Text(
-                    "Supervised by Mohamed Nabil",
-                    style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.normal,
-                        color: AppColors.primaryColor),
-                  ),
-                ),
-              ),
-            )
           ],
         ),
       ),

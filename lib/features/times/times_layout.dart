@@ -127,7 +127,7 @@ class _TimesLayoutState extends State<TimesLayout> {
                   children: [
                     Padding(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 20, vertical: 10),
+                          horizontal: 10, vertical: 12),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -141,7 +141,7 @@ class _TimesLayoutState extends State<TimesLayout> {
                             ),
                           ),
                           Text(
-                            "Pray Time\n$dayName",
+                            "Pray Time\n  $dayName",
                             style: TextStyle(
                               fontFamily: 'Janna',
                               fontSize: 14,

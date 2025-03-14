@@ -32,89 +32,93 @@ class _SebhaLayoutState extends State<SebhaLayout> {
           fit: BoxFit.cover,
         ),
       ),
-      child: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 10),
-            child: Image.asset(AppAssets.logoBG),
-          ),
-          Text(
-            "سَبِّحِ اسْمَ رَبِّكَ الأعلى",
-            style: TextStyle(
-              fontFamily: 'Janna',
-              fontSize: 36,
-              fontWeight: FontWeight.bold,
-              color: AppColors.white,
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 10),
+              child: Image.asset(AppAssets.logoBG),
             ),
-          ),
-          Expanded(
-            child: Stack(
-              alignment: Alignment.center,
-              children: [
-                Transform.rotate(
-                  angle: rotationAngle * 3.14159 / 180,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 30,
-                    ),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                            image: AssetImage(
-                              AppAssets.sebhaBody,
-                            ),
-                            fit: BoxFit.contain),
+            Text(
+              "سَبِّحِ اسْمَ رَبِّكَ الأعلى",
+              style: TextStyle(
+                fontFamily: 'Janna',
+                fontSize: 36,
+                fontWeight: FontWeight.bold,
+                color: AppColors.white,
+              ),
+            ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.65,
+              width: MediaQuery.of(context).size.width * 0.85,
+              child: Stack(
+                alignment: Alignment.center,
+                children: [
+                  Transform.rotate(
+                    angle: rotationAngle * 3.14159 / 180,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 30,
+                      ),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                              image: AssetImage(
+                                AppAssets.sebhaBody,
+                              ),
+                              fit: BoxFit.contain),
+                        ),
                       ),
                     ),
                   ),
-                ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Spacer(
-                      flex: 4,
-                    ),
-                    GestureDetector(
-                      onTap: () => onPressed(),
-                      child: Text(
-                        textAlign: TextAlign.center,
-                        "سبحان الله",
-                        style: TextStyle(
-                          fontFamily: 'Janna',
-                          fontSize: 30,
-                          fontWeight: FontWeight.bold,
-                          color: AppColors.white,
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Spacer(
+                        flex: 3,
+                      ),
+                      GestureDetector(
+                        onTap: () => onPressed(),
+                        child: Text(
+                          textAlign: TextAlign.center,
+                          "سبحان الله",
+                          style: TextStyle(
+                            fontFamily: 'Janna',
+                            fontSize: 30,
+                            fontWeight: FontWeight.bold,
+                            color: AppColors.white,
+                          ),
                         ),
                       ),
-                    ),
-                    SizedBox(height: 5),
-                    GestureDetector(
-                      onDoubleTap: () {
-                        setState(() {});
-                        rotationAngle = 0;
-                        counter = 0;
-                      },
-                      child: Text(
-                        textAlign: TextAlign.center,
-                        "$counter",
-                        style: TextStyle(
-                          fontFamily: 'Janna',
-                          fontSize: 26,
-                          fontWeight: FontWeight.bold,
-                          color: AppColors.white,
+                      SizedBox(height: 5),
+                      GestureDetector(
+                        onDoubleTap: () {
+                          setState(() {});
+                          rotationAngle = 0;
+                          counter = 0;
+                        },
+                        child: Text(
+                          textAlign: TextAlign.center,
+                          "$counter",
+                          style: TextStyle(
+                            fontFamily: 'Janna',
+                            fontSize: 26,
+                            fontWeight: FontWeight.bold,
+                            color: AppColors.white,
+                          ),
                         ),
                       ),
-                    ),
-                    Spacer(
-                      flex: 2,
-                    )
-                  ],
-                ),
-              ],
-            ),
-          )
-        ],
+                      Spacer(
+                        flex: 2,
+                      )
+                    ],
+                  ),
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

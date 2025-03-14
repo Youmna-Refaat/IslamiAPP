@@ -13,7 +13,7 @@ class PrayerTimeCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 5),
-      margin: const EdgeInsets.only(right: 10),
+      margin: const EdgeInsets.only(left: 5, right: 5),
       width: 80,
       decoration: BoxDecoration(
         gradient: LinearGradient(
@@ -23,29 +23,26 @@ class PrayerTimeCard extends StatelessWidget {
         ),
         borderRadius: BorderRadius.circular(20),
       ),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 10),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Text(
-              prayerTimeModel.name,
-              style: TextStyle(
-                  fontFamily: 'Janna',
-                  fontSize: 14,
-                  fontWeight: FontWeight.bold,
-                  color: AppColors.white),
-            ),
-            Text(
-              prayerTimeModel.time,
-              style: TextStyle(
-                  fontFamily: 'Janna',
-                  fontSize: 17,
-                  fontWeight: FontWeight.bold,
-                  color: AppColors.white),
-            ),
-          ],
-        ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Text(
+            prayerTimeModel.name,
+            style: TextStyle(
+                fontFamily: 'Janna',
+                fontSize: 14,
+                fontWeight: FontWeight.bold,
+                color: AppColors.white),
+          ),
+          Text(
+            prayerTimeModel.time,
+            style: TextStyle(
+                fontFamily: 'Janna',
+                fontSize: 17,
+                fontWeight: FontWeight.bold,
+                color: AppColors.white),
+          ),
+        ],
       ),
     );
   }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
+import '../../core/theme/color_class.dart';
 import 'widgets/radio_card.dart';
 
 class RadioBody extends StatefulWidget {
@@ -36,20 +37,31 @@ class _RadioBodyState extends State<RadioBody> {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: radioStations.isEmpty
-          ? Center(child: CircularProgressIndicator())
-          : ListView.builder(
-              padding: EdgeInsets.symmetric(horizontal: 20),
-              shrinkWrap: true,
-              itemCount: radioStations.length,
-              itemBuilder: (context, index) {
-                return RadioCard(
-                  title: radioStations[index]["name"],
-                  radioUrl: radioStations[index]["url"],
-                );
-              },
+    return radioStations.isEmpty
+        ? Container(
+            height: MediaQuery.of(context).size.height,
+            color: AppColors.secondaryColor.withValues(alpha: 0.5),
+            child: Padding(
+              padding: const EdgeInsets.only(bottom: 350),
+              child: Center(
+                child: CircularProgressIndicator(
+                  color: AppColors.primaryColor,
+                ),
+              ),
             ),
-    );
+          )
+        : ListView.builder(
+            padding: EdgeInsets.symmetric(horizontal: 20),
+            shrinkWrap: true,
+            physics: NeverScrollableScrollPhysics(),
+            scrollDirection: Axis.vertical,
+            itemCount: radioStations.length,
+            itemBuilder: (context, index) {
+              return RadioCard(
+                title: radioStations[index]["name"],
+                radioUrl: radioStations[index]["url"],
+              );
+            },
+          );
   }
 }

@@ -36,7 +36,6 @@ class _HadithLayoutState extends State<HadithLayout> {
             Padding(
               padding: EdgeInsets.symmetric(
                   horizontal: width * 0.1, vertical: height * 0.02),
-              // padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 10),
               child: Image.asset(AppAssets.logoBG),
             ),
             Padding(
@@ -76,6 +75,7 @@ class _HadithLayoutState extends State<HadithLayout> {
                     ));
               }),
             ),
+            SizedBox(height: height * 0.1),
           ],
         ),
       ),
