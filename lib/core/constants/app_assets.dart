@@ -31,7 +31,8 @@ class AppAssets {
   static String searchField = "assets/images/textfield.png";
   static String brandingImg = "assets/images/branding.png";
   static String quraanImg = "assets/images/quranSura.png";
-  static String sebhaBody = "assets/images/sebha.png";
+  static String sebhaBody = "assets/images/SebhaBody.png";
+  static String sebhaHead = "assets/images/SebhaHead.png";
   static String hadithIcn = "assets/icons/hadith.png";
   static String quraanIcn = "assets/icons/quraan.png";
   static String sibhaIcn = "assets/icons/sibha.png";

@@ -15,13 +15,8 @@ class SebhaLayout extends StatefulWidget {
 class _SebhaLayoutState extends State<SebhaLayout> {
   int counter = 0;
   double rotationAngle = 0;
-
-  void onPressed() {
-    setState(() {
-      counter++;
-      rotationAngle += 12;
-    });
-  }
+  int currentIndex = 0;
+  List<String> sebha = ["سبحان الله", "الحمد لله", "لا اله الا الله"];
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +31,9 @@ class _SebhaLayoutState extends State<SebhaLayout> {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 10),
+              padding: const EdgeInsets.symmetric(
+                horizontal: 40,
+              ),
               child: Image.asset(AppAssets.logoBG),
             ),
             Text(
@@ -48,41 +45,40 @@ class _SebhaLayoutState extends State<SebhaLayout> {
                 color: AppColors.white,
               ),
             ),
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.65,
-              width: MediaQuery.of(context).size.width * 0.85,
-              child: Stack(
-                alignment: Alignment.center,
-                children: [
-                  Transform.rotate(
-                    angle: rotationAngle * 3.14159 / 180,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 30,
-                      ),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                              image: AssetImage(
-                                AppAssets.sebhaBody,
-                              ),
-                              fit: BoxFit.contain),
-                        ),
+            SizedBox(height: 20),
+            Container(
+              margin: EdgeInsets.only(
+                left: MediaQuery.of(context).size.width * 0.15,
+              ),
+              child: Image.asset(
+                AppAssets.sebhaHead,
+                height: MediaQuery.of(context).size.height * 0.1,
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.only(
+                bottom: MediaQuery.of(context).size.height * 0.11,
+              ),
+              child: GestureDetector(
+                onTap: () => onPressed(),
+                child: Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    Transform.rotate(
+                      angle: rotationAngle * 3.14 / 180,
+                      child: Image.asset(
+                        AppAssets.sebhaBody,
+                        width: MediaQuery.of(context).size.width * 0.74,
+                        height: MediaQuery.of(context).size.height * 0.35,
+                        fit: BoxFit.contain,
                       ),
                     ),
-                  ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Spacer(
-                        flex: 3,
-                      ),
-                      GestureDetector(
-                        onTap: () => onPressed(),
-                        child: Text(
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(
                           textAlign: TextAlign.center,
-                          "سبحان الله",
+                          sebha[currentIndex],
                           style: TextStyle(
                             fontFamily: 'Janna',
                             fontSize: 30,
@@ -90,36 +86,47 @@ class _SebhaLayoutState extends State<SebhaLayout> {
                             color: AppColors.white,
                           ),
                         ),
-                      ),
-                      SizedBox(height: 5),
-                      GestureDetector(
-                        onDoubleTap: () {
-                          setState(() {});
-                          rotationAngle = 0;
-                          counter = 0;
-                        },
-                        child: Text(
-                          textAlign: TextAlign.center,
-                          "$counter",
-                          style: TextStyle(
-                            fontFamily: 'Janna',
-                            fontSize: 26,
-                            fontWeight: FontWeight.bold,
-                            color: AppColors.white,
+                        SizedBox(height: 5),
+                        GestureDetector(
+                          onDoubleTap: () {
+                            setState(() {});
+                            rotationAngle = 0;
+                            counter = 0;
+                          },
+                          child: Text(
+                            textAlign: TextAlign.center,
+                            "$counter",
+                            style: TextStyle(
+                              fontFamily: 'Janna',
+                              fontSize: 26,
+                              fontWeight: FontWeight.bold,
+                              color: AppColors.white,
+                            ),
                           ),
                         ),
-                      ),
-                      Spacer(
-                        flex: 2,
-                      )
-                    ],
-                  ),
-                ],
+                      ],
+                    ),
+                  ],
+                ),
               ),
-            )
+            ),
           ],
         ),
       ),
     );
+  }
+
+  onPressed() {
+    counter++;
+    rotationAngle += 5;
+    if (counter == 33) {
+      counter = 0;
+      rotationAngle = 0;
+      currentIndex++;
+      if (currentIndex == sebha.length) {
+        currentIndex = 0;
+      }
+    }
+    setState(() {});
   }
 }
