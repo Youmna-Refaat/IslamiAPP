@@ -1,22 +1,4 @@
-# flutter_application_4
-
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-
-
-<!-- # Islami App
+# Islami App
 
 A comprehensive Islamic application built with Flutter, providing a range of features and tools for Muslims.
 
@@ -26,16 +8,9 @@ A comprehensive Islamic application built with Flutter, providing a range of fea
 * Hadith Layout: A collection of Hadiths (sayings and actions of the Prophet Muhammad) for inspiration and guidance.
 * Sebha Layout: A digital Sebha (prayer beads) for tracking prayers and reflections.
 * Times Layout: A schedule of prayer times, fetched from a reliable API, providing accurate and up-to-date information.
-* Azkar: A collection of Islamic supplications and remembrances, fetched from a dedicated API, for users to reflect and memorize.
 * Radio Layout: A live radio stream of Islamic lectures and programs, utilizing APIs to play audio content.
 * Onboarding Layout: A guided introduction to the app's features and functionality.
 * General Layout: A dashboard for navigating the app's various sections.
-
-## APIs Used
-
-* Prayer Times API: [API Name] for fetching accurate prayer times.
-* Azkar API: [API Name] for fetching Islamic supplications and remembrances.
-* Radio API: [API Name] for streaming live Islamic lectures and programs.
 
 ## Technologies Used
 
@@ -48,14 +23,20 @@ A comprehensive Islamic application built with Flutter, providing a range of fea
 
 To run the app, follow these steps:
 
-1. Clone the repository: `git clone https://github.com/your-username/islami-app.git`
+1. Clone the repository: `git clone https://github.com/Youmna-Refaat/IslamiAPP.git`
 2. Install dependencies: `flutter pub get`
 3. Run the app: `flutter run`
 
 ## Contributing
 
-Contributions are welcome! If you'd like to report an issue or suggest a feature, please open an issue on this repository.
+We welcome contributions! If you'd like to improve the app or fix bugs, please follow these steps:
+
+1. **Fork the Repository:** Create a copy of the project on your GitHub account.
+2. **Create a New Branch:** Make a new branch for your feature or bug fix.
+3. **Make Changes:** Implement your changes, following the project's coding standards.
+4. **Test Thoroughly:** Write unit tests to ensure the quality of your code.
+5. **Create a Pull Request:** Submit your changes back to the main repository.
 
 ## License
 
-This project is licensed under the MIT License. See the LICENSE file for details. -->
+This project is licensed under the MIT License. See the LICENSE file for details.
