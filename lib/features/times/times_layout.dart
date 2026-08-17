@@ -126,19 +126,10 @@ class _TimesLayoutState extends State<TimesLayout> {
                   children: [
                     Padding(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 10, vertical: 12),
+                          horizontal: 20, vertical: 12),
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Text(
-                            todayDate,
-                            style: TextStyle(
-                              fontFamily: 'Janna',
-                              fontSize: 13,
-                              fontWeight: FontWeight.bold,
-                              color: AppColors.white,
-                            ),
-                          ),
                           Text(
                             "Pray Time\n  $dayName",
                             style: TextStyle(
@@ -148,8 +139,10 @@ class _TimesLayoutState extends State<TimesLayout> {
                               color: AppColors.black,
                             ),
                           ),
+                          Spacer(),
+
                           Text(
-                            hijriDate,
+                            todayDate,
                             style: TextStyle(
                               fontFamily: 'Janna',
                               fontSize: 13,
@@ -157,6 +150,16 @@ class _TimesLayoutState extends State<TimesLayout> {
                               color: AppColors.white,
                             ),
                           ),
+
+                          // Text(
+                          //   hijriDate,
+                          //   style: TextStyle(
+                          //     fontFamily: 'Janna',
+                          //     fontSize: 13,
+                          //     fontWeight: FontWeight.bold,
+                          //     color: AppColors.white,
+                          //   ),
+                          // ),
                         ],
                       ),
                     ),
@@ -184,7 +187,7 @@ class _TimesLayoutState extends State<TimesLayout> {
                                 ))
                           ],
                         ),
-                        SizedBox(height: 5),
+                        SizedBox(height: 15),
                       ],
                     ),
                   ],

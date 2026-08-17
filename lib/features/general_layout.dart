@@ -27,6 +27,12 @@ class _GeneralLayoutState extends State<GeneralLayout> {
     TimesLayout(),
   ];
   @override
+  void initState() {
+    super.initState();
+    setState(() {});
+  }
+
+  @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
