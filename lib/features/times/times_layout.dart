@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../../core/constants/app_assets.dart';
 import '../../core/theme/color_class.dart';
-import 'widgets/azkar_card.dart';
 import 'widgets/prayer_time_list.dart';
 import '../../data/network/prayer_times_api.dart'; // API Service
 import '../../data/models/prayer_time_model.dart';
@@ -193,46 +192,46 @@ class _TimesLayoutState extends State<TimesLayout> {
               ),
             ),
             SizedBox(height: 10),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Text(
-                "Azkar",
-                style: TextStyle(
-                  fontFamily: 'Janna',
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                  color: AppColors.titleTextColor,
-                ),
-              ),
-            ),
-            SizedBox(height: 10),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  AzkarCard(
-                      image: AppAssets.eveningAzkarImg, title: "Evening Azkar"),
-                  AzkarCard(
-                      image: AppAssets.morningAzkarImg, title: "Morning Azkar")
-                ],
-              ),
-            ),
-            SizedBox(height: 10),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  AzkarCard(
-                      image: AppAssets.wakingAzkarImg, title: "Waking Azkar"),
-                  AzkarCard(
-                      image: AppAssets.sleepingAzkarImg,
-                      title: "Sleeping Azkar")
-                ],
-              ),
-            ),
-            SizedBox(height: 30)
+            // Padding(
+            //   padding: const EdgeInsets.symmetric(horizontal: 20),
+            //   child: Text(
+            //     "Azkar",
+            //     style: TextStyle(
+            //       fontFamily: 'Janna',
+            //       fontSize: 16,
+            //       fontWeight: FontWeight.bold,
+            //       color: AppColors.titleTextColor,
+            //     ),
+            //   ),
+            // ),
+            // SizedBox(height: 10),
+            // Padding(
+            //   padding: const EdgeInsets.symmetric(horizontal: 20),
+            //   child: Row(
+            //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            //     children: [
+            //       AzkarCard(
+            //           image: AppAssets.eveningAzkarImg, title: "Evening Azkar"),
+            //       AzkarCard(
+            //           image: AppAssets.morningAzkarImg, title: "Morning Azkar")
+            //     ],
+            //   ),
+            // ),
+            // SizedBox(height: 10),
+            // Padding(
+            //   padding: const EdgeInsets.symmetric(horizontal: 20),
+            //   child: Row(
+            //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            //     children: [
+            //       AzkarCard(
+            //           image: AppAssets.wakingAzkarImg, title: "Waking Azkar"),
+            //       AzkarCard(
+            //           image: AppAssets.sleepingAzkarImg,
+            //           title: "Sleeping Azkar")
+            //     ],
+            //   ),
+            // ),
+            SizedBox(height: MediaQuery.of(context).size.height),
           ],
         ),
       ),

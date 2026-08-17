@@ -12,6 +12,20 @@ A comprehensive Islamic application built with Flutter, providing a range of fea
 * Onboarding Layout: A guided introduction to the app's features and functionality.
 * General Layout: A dashboard for navigating the app's various sections.
 
+## 📱 Screenshots
+
+<p align="center">
+  <img src="assets/screenshots/onboarding.png" width="220"/>
+  <img src="assets/screenshots/home.png" width="220"/>
+  <img src="assets/screenshots/quran.png" width="220"/>
+  <img src="assets/screenshots/hadith.png" width="220"/>
+</p>
+
+<p align="center">
+  <img src="assets/screenshots/sebha.png" width="220"/>
+  <img src="assets/screenshots/radio.png" width="220"/>
+</p>
+
 ## Technologies Used
 
 * Flutter: A mobile app development framework for building natively compiled applications.
@@ -34,7 +48,7 @@ We welcome contributions! If you'd like to improve the app or fix bugs, please f
 1. **Fork the Repository:** Create a copy of the project on your GitHub account.
 2. **Create a New Branch:** Make a new branch for your feature or bug fix.
 3. **Make Changes:** Implement your changes, following the project's coding standards.
-4. **Test Thoroughly:** Write unit tests to ensure the quality of your code.
+4. **Test Thoroughly:** Write unit tests to ensure the quality of the code.
 5. **Create a Pull Request:** Submit your changes back to the main repository.
 
 ## License
